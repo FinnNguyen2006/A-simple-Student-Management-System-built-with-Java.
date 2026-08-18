@@ -32,4 +32,14 @@ public class StudentManager {
         }
         return null;
     }
+
+    public boolean deleteStudentById(String id) {
+        Student student = findStudentById(id);
+        if (student != null) {
+            students.remove(student);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

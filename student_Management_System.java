@@ -15,7 +15,9 @@ public class student_Management_System {
             System.out.println("1. Add Student");
             System.out.println("2. Display Students");
             System.out.println("3. Search Student by ID");
-            System.out.println("4. Exit");
+            System.out.println("4. Update Student");
+            System.out.println("5. Delete Student");
+            System.out.println("6. Exit");
             System.out.println();
             System.out.println("Choose an option: ");
 
@@ -64,8 +66,38 @@ public class student_Management_System {
                         System.out.println("Student not found.");
                     }
                     break;
-
                 case 4:
+                    System.out.println("Enter Student ID to update: ");
+                    String updateId = input.nextLine();
+
+                    Student foundStudent = manager.findStudentById(updateId);
+
+                    if (foundStudent != null) {
+                        System.out.println("Enter new name: ");
+                        String newName = input.nextLine();
+                        foundStudent.setName(newName);
+                        System.out.println("Enter new age: ");
+                        int newAge = input.nextInt();
+                        foundStudent.setAge(newAge);
+                        System.out.println("Enter new GPA: ");
+                        double newGpa = input.nextDouble();
+                        input.nextLine();
+                        foundStudent.setGpa(newGpa);
+                    } else {
+                        System.out.println("Student not found!");
+                    }
+                    break;
+                case 5:
+                    System.out.println("Enter Student ID to delete: ");
+                    String deleteId = input.nextLine();
+                    boolean deleted = manager.deleteStudentById(deleteId);
+                    if (deleted) {
+                        System.out.println("Student deleted successfully!");
+                    } else {
+                        System.out.println("Student not found!");
+                    }
+                    break;
+                case 6:
                     System.out.println("Goodbye!");
                     return;
 
