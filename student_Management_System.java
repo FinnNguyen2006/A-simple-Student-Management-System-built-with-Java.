@@ -29,14 +29,27 @@ public class student_Management_System {
                     System.out.println("Enter Student ID: ");
                     String id = input.nextLine();
 
+                    Student existing = manager.findStudentById(id);
+                    if (existing != null) {
+                        System.out.println("Student ID already exists!");
+                        break;
+                    }
                     System.out.println("Enter student name: ");
                     String name = input.nextLine();
 
                     System.out.println("Enter student age: ");
                     int age = input.nextInt();
-
+                    while (age <= 0) {
+                        System.out.println("Invalid age! Please enter again: ");
+                        age = input.nextInt();
+                    }
                     System.out.println("Enter student GPA: ");
                     double gpa = input.nextDouble();
+
+                    while (gpa < 0 || gpa > 4.0) {
+                        System.out.println("Invalid GPA! Please enter again: ");
+                        gpa = input.nextDouble();
+                    }
                     input.nextLine();
 
                     Student student = new Student(id, name, age, gpa);
