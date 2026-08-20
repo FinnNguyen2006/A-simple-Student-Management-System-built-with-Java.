@@ -39,16 +39,35 @@ public class student_Management_System {
 
             switch (choice) {
                 case 1:
-                    System.out.println("Enter Student ID: ");
-                    String id = input.nextLine();
+                    String id;
+                    while (true) {
+                        System.out.println("Enter Student ID: ");
+                        id = input.nextLine();
+
+                        if (!id.trim().isEmpty()) {
+                            break;
+                        } else {
+                            System.out.println("Student ID cannot be empty.");
+                        }
+                    }
 
                     Student existing = manager.findStudentById(id);
                     if (existing != null) {
                         System.out.println("Student ID already exists!");
                         break;
                     }
-                    System.out.println("Enter student name: ");
-                    String name = input.nextLine();
+
+                    String name;
+                    while (true) {
+                        System.out.println("Enter student name: ");
+                        name = input.nextLine();
+
+                        if (!name.trim().isEmpty()) {
+                            break;
+                        } else {
+                            System.out.println("Student name cannot be empty.");
+                        }
+                    }
 
                     System.out.println("Enter student age: ");
                     int age;
