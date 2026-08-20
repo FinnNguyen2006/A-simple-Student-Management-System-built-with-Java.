@@ -21,7 +21,20 @@ public class student_Management_System {
             System.out.println();
             System.out.println("Choose an option: ");
 
-            int choice = input.nextInt();
+            int choice;
+            while (true) {
+                if (input.hasNextInt()) {
+                    choice = input.nextInt();
+                    if (choice >= 1 && choice <= 6) {
+                        break;
+                    } else {
+                        System.out.println("Please choose between 1 and 6");
+                    }
+                } else {
+                    System.out.println("Invalid input! Please enter a number.");
+                    input.nextLine();
+                }
+            }
             input.nextLine();
 
             switch (choice) {
@@ -38,17 +51,35 @@ public class student_Management_System {
                     String name = input.nextLine();
 
                     System.out.println("Enter student age: ");
-                    int age = input.nextInt();
-                    while (age <= 0) {
-                        System.out.println("Invalid age! Please enter again: ");
-                        age = input.nextInt();
+                    int age;
+                    while (true) {
+                        if (input.hasNextInt()) {
+                            age = input.nextInt();
+                            if (age > 0) {
+                                break;
+                            } else {
+                                System.out.println("Age must be greater than 0!");
+                            }
+                        } else {
+                            System.out.println("Invalid input! Please enter a number.");
+                            input.nextLine();
+                        }
                     }
-                    System.out.println("Enter student GPA: ");
-                    double gpa = input.nextDouble();
 
-                    while (gpa < 0 || gpa > 4.0) {
-                        System.out.println("Invalid GPA! Please enter again: ");
-                        gpa = input.nextDouble();
+                    System.out.println("Enter student GPA: ");
+                    double gpa;
+                    while (true) {
+                        if (input.hasNextDouble()) {
+                            gpa = input.nextDouble();
+                            if (gpa >= 0 && gpa <= 4.0) {
+                                break;
+                            } else {
+                                System.out.println("GPA must be between 0 and 4.0");
+                            }
+                        } else {
+                            System.out.println("Invalid input! Please enter a number.");
+                            input.nextLine();
+                        }
                     }
                     input.nextLine();
 
@@ -89,17 +120,48 @@ public class student_Management_System {
                         System.out.println("Enter new name: ");
                         String newName = input.nextLine();
                         foundStudent.setName(newName);
+
                         System.out.println("Enter new age: ");
-                        int newAge = input.nextInt();
+                        int newAge;
+                        while (true) {
+                            if (input.hasNextInt()) {
+                                newAge = input.nextInt();
+                                if (newAge > 0) {
+                                    break;
+                                } else {
+                                    System.out.println("Age must be greater than 0!");
+                                }
+                            } else {
+                                System.out.println("Invalid input! Please enter a number.");
+                                input.nextLine();
+                            }
+                        }
                         foundStudent.setAge(newAge);
+
                         System.out.println("Enter new GPA: ");
-                        double newGpa = input.nextDouble();
+                        double newGpa;
+                        while (true) {
+                            if (input.hasNextDouble()) {
+                                newGpa = input.nextDouble();
+                                if (newGpa >= 0 && newGpa <= 4.0) {
+                                    break;
+                                } else {
+                                    System.out.println("GPA must be between 0 and 4.0");
+                                }
+                            } else {
+                                System.out.println("Invalid input! Please enter a number.");
+                                input.nextLine();
+                            }
+                        }
                         input.nextLine();
                         foundStudent.setGpa(newGpa);
+                        System.out.println("Student updated successfully.");
+
                     } else {
                         System.out.println("Student not found!");
                     }
                     break;
+
                 case 5:
                     System.out.println("Enter Student ID to delete: ");
                     String deleteId = input.nextLine();
